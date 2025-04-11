@@ -34,4 +34,9 @@ public class BookController {
     public ResponseDto returnBook(@RequestBody BookTransactionDto bookTransactionDto) {
         return bookService.returnBook(bookTransactionDto);
     }
+
+    @GetMapping("/burrow-history")
+    public List<BookDto> getBorrowHistory(@RequestParam(value = "email") String email) {
+        return bookService.getBorrowHistory(email);
+    }
 }

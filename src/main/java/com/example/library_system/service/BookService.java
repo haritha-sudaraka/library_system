@@ -79,4 +79,8 @@ public class BookService {
                 .message("Error Occurred")
                 .build();
     }
+
+    public List<BookDto> getBorrowHistory(String email) {
+        return borrowRecordRepository.findBorrowedBooksByUserEmail(email).stream().map(book -> BookDto.builder().id(book.getId()).title(book.getTitle()).author(book.getAuthor()).year(book.getPublishedYear()).build()).toList();
+    }
 }
